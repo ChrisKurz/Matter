@@ -15,6 +15,6 @@ password: ubuntu
 
 2. Ensure the Raspberry hhas internet access (e.g. Ethernet connection) and update/upgrade the system:
 
-             sudo apt-get update && sudo apt-get upgrade
+      sudo apt-get update && sudo apt-get upgrade
 
 NOTE
