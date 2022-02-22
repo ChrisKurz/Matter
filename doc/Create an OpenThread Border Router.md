@@ -3,6 +3,7 @@
 needed Hardware:
 - Raspberry Pi 3B (or newer) with SD card of at least 8 GB of memory
 
+The OpenThread Border Router is installed on a RaspberryPi by following these steps:
 
 1. Install Ubuntu 64-bit server OS (20.04.3 LTS) on a Raspberry's SD card using rpi-imager tool:  https://www.raspberrypi.com/software
 
