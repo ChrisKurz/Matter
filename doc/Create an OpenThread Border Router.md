@@ -27,7 +27,9 @@ __NOTE__
 Remote control of Raspberry Pi for Windows users:
 
 a. Open Toolchan Manager
+
 b. Expand the dropdown list at the latest NCS version (button with arrow) and click on "Open bash"
+
 c. Run the following command in the bash:  
 
        ssh ubuntu@ <IP-address of RaspberryPi>
