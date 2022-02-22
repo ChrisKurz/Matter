@@ -17,7 +17,6 @@ Ubuntu default login credentials:
 
 ------
 
-
 2. Ensure the RaspberryPi has internet access (e.g. Ethernet connection) and update/upgrade the system:
 
        sudo apt-get update && sudo apt-get upgrade
@@ -28,9 +27,9 @@ __NOTE__
 
 Remote control of Raspberry Pi for Windows users:
 
-1. Open Toolchan Manager
-2. Expand the dropdown list at the latest NCS version (button with arrow) and click on "Open bash"
-3. Run  
+a. Open Toolchan Manager
+b. Expand the dropdown list at the latest NCS version (button with arrow) and click on "Open bash"
+c. Run the following command in the bash:  
 
        ssh ubuntu@ <IP-address of RaspberryPi>
 
