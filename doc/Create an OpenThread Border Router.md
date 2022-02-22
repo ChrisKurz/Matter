@@ -1,7 +1,6 @@
 # Create an OpenThread Border Router (OTBR)
 
-needed Hardware:
-- Raspberry Pi 3B (or newer) with SD card of at least 8 GB of memory
+needed Hardware:   Raspberry Pi 3B (or newer) with SD card of at least 8 GB of memory
 
 The OpenThread Border Router is installed on a RaspberryPi by following these steps:
 
