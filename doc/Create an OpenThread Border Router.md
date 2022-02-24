@@ -4,17 +4,11 @@ needed Hardware:   Raspberry Pi 3B (or newer) with SD card of at least 8 GB of m
 
 The OpenThread Border Router is installed on a RaspberryPi by following these steps:
 
+## Prepare the Raspberry Pi
+
 1. Install Ubuntu 64-bit server OS (20.04.3 LTS) on a Raspberry's SD card using rpi-imager tool:  https://www.raspberrypi.com/software
 
-------
-
-__NOTE__
-
-Ubuntu default login credentials:   
-- login: __ubuntu__
-- password: __ubuntu__
-
-------
+(__NOTE:__ Ubuntu default login: __ubuntu__  /  password: __ubuntu__)
 
 2. Ensure the RaspberryPi has internet access (e.g. Ethernet connection) and update/upgrade the system:
 
@@ -40,23 +34,29 @@ c. Run the following command in the bash:
 
        sudo apt install -fy python3-pip pkg-config libavahi-client-dev libcairo2-dev libgirepository1.0-dev avahi-daemon pi-bluetooth avahi-utils
 
-------
-
-__NOTE__
-
-Use following instruction to check the Ubuntu version of Raspberry Pi:
+__NOTE:__ You can check the Ubuntu version of Raspberry Pi with following instruction:  
 
        lsb_release -a
 
-Aditional module need to be installed for Ubuntu 20.10:
+Aditional module need to be installed for Ubuntu 20.10: sudo apt install linux-modules-extra-raspi
 
-       sudo apt install linux-modules-extra-raspi
-
-------
 
 4. Some of this software packages require a rebot of the Raspberry Pi. Enter following instruction for reboot: 
  
        sudo reboot
+
+
+## Prepare Radio Co-Processor (RCP)
+
+The Raspberry Pi does not directly support Thread communication. However, Thread communication is possible when a Radio Co-Processor (RCP) is used. The following steps describe how to setup the RCP.
+
+5. Different development tools are supported here. Moreover, there are different ways to build the firmware for the RCP device. Please select one of the following possibilites:
+- Tool: nRF52840dongle / building: using Command Line tool ("west" tool)
+- Tool: nRF52840dongle / building: using Visual Studio Code
+- Tool: nRF52840DK / building: using Command Line tool ("west" tool)
+- Tool: nRF52840DK / building: using Visual Studio Code
+
+
 
 
  
