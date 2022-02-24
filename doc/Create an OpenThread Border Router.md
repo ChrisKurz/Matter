@@ -2,6 +2,9 @@
 
 needed Hardware:   Raspberry Pi 3B (or newer) with SD card of at least 8 GB of memory
 
+needed Software:   Note that this description is based on *nRF Connect SDK V1.8.0*! Some modifications in the description here would be needed for newer SDK versions!!!
+
+
 The OpenThread Border Router is installed on a RaspberryPi by following these steps:
 
 ## Prepare the Raspberry Pi
