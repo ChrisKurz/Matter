@@ -52,7 +52,7 @@ The Raspberry Pi does not directly support Thread communication. However, Thread
 
 5. Different development tools are supported here. Moreover, there are different ways to build the firmware for the RCP device. Please select one of the following possibilites:
 - ![Tool: nRF52840dongle building: using Command Line tool](Create an OpenThread Border Router_RCP-dongle-west.md)
-- Tool: nRF52840dongle / building: using Visual Studio Code
+- ![Tool: nRF52840dongle / building: using Visual Studio Code](Create_an_OpenThread_Border_Router_RCP_dongle-VSC.md)
 - Tool: nRF52840DK / building: using Command Line tool ("west" tool)
 - Tool: nRF52840DK / building: using Visual Studio Code
 
