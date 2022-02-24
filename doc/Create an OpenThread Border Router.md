@@ -29,7 +29,7 @@ b. Expand the dropdown list at the latest NCS version (button with arrow) and cl
 
 c. Run the following command in the bash:  
 
-       ssh ubuntu@ <IP-address of RaspberryPi>
+    ssh ubuntu@ <IP-address of RaspberryPi>
 
 ------
 
@@ -39,7 +39,7 @@ c. Run the following command in the bash:
 
 __NOTE:__ You can check the Ubuntu version of Raspberry Pi with following instruction:  
 
-       lsb_release -a
+    lsb_release -a
 
 Aditional module need to be installed for Ubuntu 20.10: sudo apt install linux-modules-extra-raspi
 
@@ -83,14 +83,14 @@ Next, we will install the OTBR software on the Raspberry Pi. Again, here are dif
 
 __NOTE:__ For a new Raspberry setup the serial interface is usually ttyACM0. You might have to check if ttyACOM0 is the right serial interface. This is done by entering following command: 
    
-       ls /dev// | grep ttyACM*
+    ls /dev// | grep ttyACM*
 
 ## Create Thread Network
 
 Now it should be possible to create a Thread network:
 
 11. Open a browser on a computer that is in the same Network as the Raspberry PI (e.g. laptop is connected via Wifi to a router where the Raspberry Pi is connected via Ethernet cable). 
-12. Open the page *http:// < IP address of your Raspberry Pi > *
+12. Open the page **http:// < IP address of your Raspberry Pi >**
 13. Thread Border Router webpage should now be shown.
 14. Go to the "Form" tab and press button "Form"
 15. You succeeded with these steps when you see the message "__FORM operation is successful__"
@@ -102,27 +102,27 @@ Now let's add the Matter controller to the Raspberry Pi:
 16. Stop Docker by pressing Ctrl+C
 17. On Raspberry Pi download controller built packages from sdk-connectedhomeip tag:
 
-       wget https://github.com/nrfconnect/sdk-connectedhomeip/releases/download/v1.8.0/chip-tool-python_linux_debug.zip 
+        wget https://github.com/nrfconnect/sdk-connectedhomeip/releases/download/v1.8.0/chip-tool-python_linux_debug.zip 
 
 18. Insall unzip, in case unzip was not yet installed on the Raspberry Pi. 
 
-       sudo apt install unzip
+        sudo apt install unzip
 
 19. Extract the .zip package:
 
-       unzip chip-tool-python_linux_debug.zip
+        unzip chip-tool-python_linux_debug.zip
 
 20. and install .whl file on Raspberry Pi:
 
-       python3 -m pip install chip-0.0-cp37-abi3-linux_aarch64.whl --force-reinstall
+        python3 -m pip install chip-0.0-cp37-abi3-linux_aarch64.whl --force-reinstall
 
 21. Now a reboot is needed:
 
-       sudo reboot
+        sudo reboot
        
 22. Try running the Python CHIP controller application on the Raspberry Pi:
 
-       chip-device-ctrl
+        chip-device-ctrl
 
 
 
