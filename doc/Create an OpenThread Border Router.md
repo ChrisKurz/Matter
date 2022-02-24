@@ -51,7 +51,7 @@ Aditional module need to be installed for Ubuntu 20.10: sudo apt install linux-m
 The Raspberry Pi does not directly support Thread communication. However, Thread communication is possible when a Radio Co-Processor (RCP) is used. The following steps describe how to setup the RCP.
 
 5. Different development tools are supported here. Moreover, there are different ways to build the firmware for the RCP device. Please select one of the following possibilites:
-- ![Tool: nRF52840dongle building: using Command Line tool](Create Create an OpenThread Border Router_RCP-dongle-west.md)
+- ![Tool: nRF52840dongle building: using Command Line tool](Create an OpenThread Border Router_RCP-dongle-west.md)
 - Tool: nRF52840dongle / building: using Visual Studio Code
 - Tool: nRF52840DK / building: using Command Line tool ("west" tool)
 - Tool: nRF52840DK / building: using Visual Studio Code
