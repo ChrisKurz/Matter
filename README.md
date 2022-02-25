@@ -12,3 +12,9 @@ https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/ug_matter_config
 In our setup we will use a Raspberry PI and run an OTBR and the Matter Controller on it. So let's start and prepare it. 
 
 ![Create an OpenThread Border Router (OTBR) including Matter Controller](doc/Create_an_OpenThread_Border_Router.md)
+
+Now we need Matter Accessories or Matter Devices in our setup. There are several examples within the nRF Connect SDK. Here is a description how to create the Matter Devices and add it to the network. 
+
+- Matter Light bulb
+- Matter Light switch
+- Matter Door lock
