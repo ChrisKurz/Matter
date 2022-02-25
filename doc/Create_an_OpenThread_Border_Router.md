@@ -123,6 +123,9 @@ Now let's add the Matter controller to the Raspberry Pi:
 22. Try running the Python CHIP controller application on the Raspberry Pi:
 
         chip-device-ctrl
+        
+23. You should see now the prompt "chip-device-ctrl > ". Enter help to get a list of available commands. 
+24. stop Controller by pressing Ctrl+C
 
 ## Set Network Pairing Credentials
 You must provide the Matter Controller with network credentials, which will be further used during device commissioning procedure to configure the device with a Thread network.
@@ -131,9 +134,13 @@ You must provide the Matter Controller with network credentials, which will be f
 
         sudo docker exec -it otbr sh -c "sudo ot-ctl dataset active -x"
 
-2. Then set the previously obtained Active Operational Dataset as a hex-encoded value using the following command:
+2. start Matter Controller again by entering:
 
-        chip-device-ctrl > set-pairing-thread-credential <ADD HEX VALUE WE GOT IN PREVIOUS STEP>
+        chip-device-ctrl
+
+3. When Matter Controller is running set the previously obtained Active Operational Dataset as a hex-encoded value using the following command:
+
+        set-pairing-thread-credential <ADD HEX VALUE WE GOT IN PREVIOUS STEP>
 
 The OpenThread Border Router and Matter Controller is now functional. Next step is to add Matter Devices to the Network. Take a look on the previous page furth further info about this. 
 
