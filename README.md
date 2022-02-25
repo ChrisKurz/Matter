@@ -17,4 +17,4 @@ Now we need Matter Accessories or Matter Devices in our setup. There are several
 
 - Matter Light bulb
 - Matter Light switch
-- [Matter Door lock](Matter_Device_Door_Lock.md)
+- [Matter Door lock](doc/Matter_Device_Door_Lock.md)
