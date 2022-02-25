@@ -123,3 +123,6 @@ Now let's add the Matter controller to the Raspberry Pi:
 22. Try running the Python CHIP controller application on the Raspberry Pi:
 
         chip-device-ctrl
+
+
+The OpenThread Border Router and Matter Controller is now functional. Next step is to add Matter Devices to the Network. Take a look on the previous page furth further info about this. ![go to previous page](../README.md)
