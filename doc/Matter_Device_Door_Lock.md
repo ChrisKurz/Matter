@@ -72,4 +72,22 @@ After connecting the device over Bluetooth LE, the controller will go through th
 3) Discovering the IPv6 address of the Matter accessory using the SRP (Serive Registration Protocol) for Thread devices. It results in printing log that indicates that the node address has been updated. The IPv6 address of the device is cached in the controller for later usage.
 4) Closing the Bluetooth LE connection, as the commissioning process is finished and the Pytion CHIP controller is now using only the IPv6 traffic to reach the device.
 
+## Control Application ZCL Clusters
+Execute the following command to toggle the LED state:
 
+       chip-device-ctrl > zcl OnOff Toggle 1234 1 0
+
+You get some details about the OnOff cluster by entering following command:
+
+       chip-device-ctrl > zcl ? OnOff
+       
+## Read Basic Information out of Matter Accessory
+Every Matter accessory device supports a Basic Cluster, which maintains collection of attributes that a controller can obtain from a device, such as the vendor name, the product name, or software version. Use zclread command to read those values from the device:
+
+       chip-device-ctrl > zclread Basic VendorName 1234 1 0
+       chip-device-ctrl > zclread Basic ProductName 1234 1 0
+       chip-device-ctrl > zclread Basic SoftwareVersion 1234 1 0
+       
+Use the following command to list all available commands for Basic Cluster:
+
+       zcl ? Basic
