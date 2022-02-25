@@ -1,6 +1,6 @@
 # Matter
 
-This document describes the set-up of a matter demos. It is possible to setup different development environments. In this article we will focus on a setup with OpenTread Border Router and Matter controller on the same device, as shown in the following figure. 
+This document describes the set-up of a matter demo network. It is possible to setup different development environments. In this article we will focus on a setup with OpenTread Border Router and Matter controller on the same device, as shown in the following figure. 
 
 ![](img/OTBR_and_Matter_Controller_on_same_device.JPG)
 
@@ -17,4 +17,4 @@ Now we need Matter Accessories or Matter Devices in our setup. There are several
 
 - Matter Light bulb
 - Matter Light switch
-- Matter Door lock
+- ![Matter Door lock](Matter_Device_Door_Lock.md)
