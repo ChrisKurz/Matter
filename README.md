@@ -11,4 +11,4 @@ https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/ug_matter_config
 
 In our setup we will use a Raspberry PI and run an OTBR and the Matter Controller on it. So let's start and prepare it. 
 
-Create an OpenThread Border Router (OTBR) including Matter Controller 
+![Create an OpenThread Border Router (OTBR) including Matter Controller](doc/Create an OpenThread Border Router.md)
