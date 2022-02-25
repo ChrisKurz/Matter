@@ -30,6 +30,6 @@ __NOTE:__ Please use nRF Connect SDK Version 1.8.0. Some needed files are not av
 9. Connect the nRF52840dongle and press the "RESET" button (red LED should blink afterwards)
 10. Start firmware update by entering following instruction:
 
-       nrfutil dfu usb-serial -pkg zephyr/zephyr.zip -p COM11
+        nrfutil dfu usb-serial -pkg zephyr/zephyr.zip -p COM11
        
 __NOTE:__ please check with Windows Device Manager the COM port of the nRF52840dongle. In my case the COM port is COM11. You have to enter here the COM port used on your computer!
