@@ -79,7 +79,7 @@ Next, we will install the OTBR software on the Raspberry Pi. Again, here are dif
        
 10. Start OTBR docker container:
 
-       sudo docker run -it --rm --privileged --name otbr --network host --volume /dev/ttyACM0:/dev/radio nrfconnect/otbr:8ae81c5 --radio-url spinel+hdlc+uart:///dev/radio?uart-baudrate=1000000
+        sudo docker run -it --rm --privileged --name otbr --network host --volume /dev/ttyACM0:/dev/radio nrfconnect/otbr:8ae81c5 --radio-url spinel+hdlc+uart:///dev/radio?uart-baudrate=1000000
 
 __NOTE:__ For a new Raspberry setup the serial interface is usually ttyACM0. You might have to check if ttyACOM0 is the right serial interface. This is done by entering following command: 
    
