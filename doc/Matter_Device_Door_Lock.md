@@ -36,4 +36,40 @@ NOTE: Please use nRF Connect SDK Version 1.8.0. Some needed files are not availa
 
 
 ## Matter Device Commissioning
+The Matter Controller uses a 12-bit value called __discriminator__ to discern between multiple commissionable device advertisements, as well as a 27-bit __setup PIN code__ to authenticate the device. You can find these values in the logging terminal of the device (e.g. Putty). Here is an example how the output in the terminal might look like:
+
+       I: 254 [DL]Device Configuration:
+       I: 257 [DL] Serial Number: TEST_SN
+       I: 260 [DL] Vendor Id: 9050 (0x235A)
+       I: 263 [DL] Product Id: 20043 (0x4E4B)
+       I: 267 [DL] Hardware Version: 1
+       I: 270 [DL] Setup Pin Code: 20202021
+       I: 273 [DL] Setup Discriminator: 3840 (0xF00)
+       I: 278 [DL] Manufacturing Date: (not set)
+       I: 281 [DL] Device Type: 65535 (0xFFFF)
+  
+In this example you find the following parameters:
+- Discriminator of this device is:  3840
+- Setup code of this device is:  20202021
+- Temporary Node ID: 1234
+
+Check these parameters on your setup and use your values if they differ. 
+
+Run the following command to establish the secure connection over Bluetooth LE, using the parameters you found out before:
+
+       chip-device-ctrl > connect -ble 3840 20202021 1234
+
+Note: you can skip the last parameter, the Node ID, in the command. If you skip it, the controller will assign it randomly. In that case, note down the Node ID, because it is required later in the configuration process. 
+
+After connecting the device over Bluetooth LE, the controller will go through the following stages:
+1) Establishing a secure connection that completes the PASE (Password-Authenticated Session Establishment) session using SPAKE2+ protocol and results in printing the following log:
+
+       ...
+       Secure Session to Device Established
+       ...
+
+2) Providing the device with a network interface using ZCL Network Commissioning cluster commands, and the network pairing credentials set in the previous step.
+3) Discovering the IPv6 address of the Matter accessory using the SRP (Serive Registration Protocol) for Thread devices. It results in printing log that indicates that the node address has been updated. The IPv6 address of the device is cached in the controller for later usage.
+4) Closing the Bluetooth LE connection, as the commissioning process is finished and the Pytion CHIP controller is now using only the IPv6 traffic to reach the device.
+
 
