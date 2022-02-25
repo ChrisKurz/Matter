@@ -54,10 +54,10 @@ Aditional module need to be installed for Ubuntu 20.10: sudo apt install linux-m
 The Raspberry Pi does not directly support Thread communication. However, Thread communication is possible when a Radio Co-Processor (RCP) is used. The following steps describe how to setup the RCP.
 
 5. Different development tools are supported here. Moreover, there are different ways to build the firmware for the RCP device. Please select one of the following possibilites and follow the step-by-step description:
-- ![Tool: nRF52840dongle / building: using Command Line tool](Create_an_OpenThread_Border_Router_RCP-dongle-west.md)
-- ![Tool: nRF52840dongle / building: using Visual Studio Code](Create_an_OpenThread_Border_Router_RCP-dongle-VSC.md)
-- ![Tool: nRF52840DK / building: using Command Line tool ("west" tool)](Create_an_OpenThread_Border_Router_RCP-DK-west.md)
-- ![Tool: nRF52840DK / building: using Visual Studio Code](Create_an_OpenThread_Border_Router_RCP-DK-VSC.md)
+- [Tool: nRF52840dongle / building: using Command Line tool](Create_an_OpenThread_Border_Router_RCP-dongle-west.md)
+- [Tool: nRF52840dongle / building: using Visual Studio Code](Create_an_OpenThread_Border_Router_RCP-dongle-VSC.md)
+- [Tool: nRF52840DK / building: using Command Line tool ("west" tool)](Create_an_OpenThread_Border_Router_RCP-DK-west.md)
+- [Tool: nRF52840DK / building: using Visual Studio Code](Create_an_OpenThread_Border_Router_RCP-DK-VSC.md)
 
 6. Connect the nRF52840dongle or the nRF52840DK (use Debug USB Connector) to the Raspberry Pi
 
@@ -95,7 +95,7 @@ Now it should be possible to create a Thread network:
 14. Go to the "Form" tab and press button "Form"
 15. You succeeded with these steps when you see the message "__FORM operation is successful__"
 
-## Adding Python CHIP Controller
+## Adding Python CHIP Controller (Matter Controller)
 
 Now let's add the Matter controller to the Raspberry Pi:
 
@@ -124,5 +124,17 @@ Now let's add the Matter controller to the Raspberry Pi:
 
         chip-device-ctrl
 
+## Set Network Pairing Credentials
+You must provide the Matter Controller with network credentials, which will be further used during device commissioning procedure to configure the device with a Thread network.
 
-The OpenThread Border Router and Matter Controller is now functional. Next step is to add Matter Devices to the Network. Take a look on the previous page furth further info about this. ![go to previous page](../README.md)
+1. First, fetch and store the current Active Operational Dataset from the OpenThread Border Router (OTBR). In this example the OTBR is running on Docker, so we have to enter the following:
+
+        sudo docker exec -it otbr sh -c "sudo ot-ctl dataset active -x"
+
+2. Then set the previously obtained Active Operational Dataset as a hex-encoded value using the following command:
+
+        chip-device-ctrl > set-pairing-thread-credential <ADD HEX VALUE WE GOT IN PREVIOUS STEP>
+
+The OpenThread Border Router and Matter Controller is now functional. Next step is to add Matter Devices to the Network. Take a look on the previous page furth further info about this. 
+
+[go to previous page](../README.md)
