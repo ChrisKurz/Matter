@@ -35,8 +35,12 @@ NOTE: Please use nRF Connect SDK Version 1.8.0. Some needed files are not availa
 7. Open a terminal program (e.g. Putty) and see logs from the development board. Default settings for terminal program: 115200 Bd, 8 databits, 1 stop bit, no parity
 
 
-## Matter Device Commissioning
-The Matter Controller uses a 12-bit value called __discriminator__ to discern between multiple commissionable device advertisements, as well as a 27-bit __setup PIN code__ to authenticate the device. You can find these values in the logging terminal of the device (e.g. Putty). Here is an example how the output in the terminal might look like:
+## Commissioning of the Matter Accessory using Matter Controller
+You must provide the Matter Controller with network credentials, which will be further used during device commissioning procedure to configure the device with a Thread network.
+
+1. Write down the discriminator and setup PIN code:
+
+The Matter Controller uses a 12-bit value called __discriminator__ to discern between multiple commissionable device advertisements, as well as a 27-bit __setup PIN code__ to authenticate the device. You can find these values in the UART logging terminal of the device (e.g. Putty). Here is an example how the output in the terminal might look like:
 
        I: 254 [DL]Device Configuration:
        I: 257 [DL] Serial Number: TEST_SN
@@ -51,26 +55,52 @@ The Matter Controller uses a 12-bit value called __discriminator__ to discern be
 In this example you find the following parameters:
 - Discriminator of this device is:  3840
 - Setup code of this device is:  20202021
-- Temporary Node ID: 1234
 
-Check these parameters on your setup and use your values if they differ. 
 
-Run the following command to establish the secure connection over Bluetooth LE, using the parameters you found out before:
+2. First, fetch and store the current Active Operational Dataset from the OpenThread Border Router (OTBR). In this example the OTBR is running on Docker, so we have to enter the following:
 
-       chip-device-ctrl > connect -ble 3840 20202021 1234
+        sudo docker exec -it otbr sh -c "sudo ot-ctl dataset active -x"
 
-Note: you can skip the last parameter, the Node ID, in the command. If you skip it, the controller will assign it randomly. In that case, note down the Node ID, because it is required later in the configuration process. 
+Note: we will need the hex number later. For example, copy it into notpad. 
 
-After connecting the device over Bluetooth LE, the controller will go through the following stages:
-1) Establishing a secure connection that completes the PASE (Password-Authenticated Session Establishment) session using SPAKE2+ protocol and results in printing the following log:
+3. get the PAN-ID of your thread network:
 
-       ...
-       Secure Session to Device Established
-       ...
+        sudo docker exec -it otbr sh -c "sudo ot-ctl dataset extpanid"
 
-2) Providing the device with a network interface using ZCL Network Commissioning cluster commands, and the network pairing credentials set in the previous step.
-3) Discovering the IPv6 address of the Matter accessory using the SRP (Serive Registration Protocol) for Thread devices. It results in printing log that indicates that the node address has been updated. The IPv6 address of the device is cached in the controller for later usage.
-4) Closing the Bluetooth LE connection, as the commissioning process is finished and the Pytion CHIP controller is now using only the IPv6 traffic to reach the device.
+Note: we will need this info later. Note it somewhere. 
+
+4. start Matter Controller again by entering:
+
+        chip-device-ctrl
+
+5. Press button 4 on nRF52840DK. (this starts Bluetooth LE advertising on Matter Accessory device. The Advertising will be done for approximately 15 minutes!)
+
+6. Connecting via BLE:
+
+        connect -ble 3840 20202021 1
+
+Note: You can use the command "ble-scan" to check if the Matter Accessory is still advertising. If advertising has stop, repeat step 4. 
+
+7. The statement "Secure Session to Device Established" has to be shown in UART log.
+
+8. Adding Thread network:
+
+        zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset=hex:"USE YOUR HEX-DATASET HERE" breadcrumb=0 timeoutMs=3000
+
+Note: replace the string **"USE YOUR HEX-DATASET HERE"** in above command by the active operational dataset you read in step 1.
+
+9. Enable Thread network:
+
+        zcl NetworkCommissioning EnableNetwork 1 0 0 networkID=hex:"USE YOUR EXTPAN-ID HERE" breadcrumb=0 timeoutMs=3000
+       
+Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the extended PAN-Id you read in step 2.
+
+10. The BLE connection is no longer needed. You can close it with following command:
+       
+       close-ble
+
+11. on the UART log terminal enter following command to check if the Matter Accessory is part of the Thread network. It should be in the state "child". 
+
 
 ## Control Application ZCL Clusters
 Execute the following command to toggle the LED state:
