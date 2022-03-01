@@ -134,9 +134,13 @@ You must provide the Matter Controller with network credentials, which will be f
 
         sudo docker exec -it otbr sh -c "sudo ot-ctl dataset active -x"
 
+Note: we will need the hex number later. For example, copy it into notpad. 
+
 2. get the PAN-ID of your thread network:
 
         sudo docker exec -it otbr sh -c "sudo ot-ctl dataset extpanid"
+
+Note: we will need this info later. Note it somewhere. 
 
 3. start Matter Controller again by entering:
 
@@ -152,13 +156,17 @@ You must provide the Matter Controller with network credentials, which will be f
 
 7. Adding Thread network:
 
-        zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset= <USE YOUR HEX-DATASET HERE> breadcrumb=0 timeoutMs=3000
+        zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset=hex:<USE YOUR HEX-DATASET HERE> breadcrumb=0 timeoutMs=3000
+
+Note: replace the string "<USE YOUR HEX-DATASET HERE>" in above command by the active operational dataset you read in step 1.
 
 8. Enable Thread network:
 
-        zcl NetworkCommissioning EnableNetwork 1 0 0 
+        zcl NetworkCommissioning EnableNetwork 1 0 0 networkID=hex:<EXTPAN-ID> breadcrumb=0 timeoutMs=3000
+       
+Note: replace the string "<EXTPAN-ID>" in above command by the extended PAN-Id you read in step 2.
 
-
+b
 
 
 
