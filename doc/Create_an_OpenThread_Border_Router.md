@@ -148,11 +148,13 @@ You must provide the Matter Controller with network credentials, which will be f
 
         connect -ble 3840 20202021 1
 
-6. Adding Thread network:
+6. The statement "Secure Session to Device Established" has to be shown in UART log.
+
+7. Adding Thread network:
 
         zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset= <USE YOUR HEX-DATASET HERE> breadcrumb=0 timeoutMs=3000
 
-7. Enable Thread network:
+8. Enable Thread network:
 
         zcl NetworkCommissioning EnableNetwork 1 0 0 
 
