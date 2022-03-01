@@ -127,54 +127,5 @@ Now let's add the Matter controller to the Raspberry Pi:
 23. You should see now the prompt "chip-device-ctrl > ". Enter help to get a list of available commands. 
 24. stop Controller by pressing Ctrl+C
 
-## Set Network Pairing Credentials / Commission the Matter Accessory using Matter Controller
-You must provide the Matter Controller with network credentials, which will be further used during device commissioning procedure to configure the device with a Thread network.
-
-1. First, fetch and store the current Active Operational Dataset from the OpenThread Border Router (OTBR). In this example the OTBR is running on Docker, so we have to enter the following:
-
-        sudo docker exec -it otbr sh -c "sudo ot-ctl dataset active -x"
-
-Note: we will need the hex number later. For example, copy it into notpad. 
-
-2. get the PAN-ID of your thread network:
-
-        sudo docker exec -it otbr sh -c "sudo ot-ctl dataset extpanid"
-
-Note: we will need this info later. Note it somewhere. 
-
-3. start Matter Controller again by entering:
-
-        chip-device-ctrl
-
-4. Press button 4 on nRF52840DK. (this starts Bluetooth LE advertising on Matter Accessory device. The Advertising will be done for approximately 15 minutes!)
-
-5. Connecting via BLE:
-
-        connect -ble 3840 20202021 1
-
-Note: You can use the command "ble-scan" to check if the Matter Accessory is still advertising. If advertising has stop, repeat step 4. 
-
-6. The statement "Secure Session to Device Established" has to be shown in UART log.
-
-7. Adding Thread network:
-
-        zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset=hex:"USE YOUR HEX-DATASET HERE" breadcrumb=0 timeoutMs=3000
-
-Note: replace the string **"USE YOUR HEX-DATASET HERE"** in above command by the active operational dataset you read in step 1.
-
-8. Enable Thread network:
-
-        zcl NetworkCommissioning EnableNetwork 1 0 0 networkID=hex:"USE YOUR EXTPAN-ID HERE" breadcrumb=0 timeoutMs=3000
-       
-Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the extended PAN-Id you read in step 2.
-
-9. The BLE connection is no longer needed. You can close it with following command:
-       
-       close-ble
-
-10. on the UART log terminal enter following command to check if the Matter Accessory is part of the Thread network. It should be in the state "child". 
-       
-       
-## 
-       
+      
 [go to previous page](../README.md)
