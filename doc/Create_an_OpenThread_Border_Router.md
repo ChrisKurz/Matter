@@ -146,11 +146,13 @@ Note: we will need this info later. Note it somewhere.
 
         chip-device-ctrl
 
-4. Press button 4 on nRF52840DK. (this starts Bluetooth LE advertising on Matter Accessory device)
+4. Press button 4 on nRF52840DK. (this starts Bluetooth LE advertising on Matter Accessory device. The Advertising will be done for approximately 15 minutes!)
 
 5. Connecting via BLE:
 
         connect -ble 3840 20202021 1
+
+Note: You can use the command "ble-scan" to check if the Matter Accessory is still advertising. If advertising has stop, repeat step 4. 
 
 6. The statement "Secure Session to Device Established" has to be shown in UART log.
 
@@ -158,22 +160,21 @@ Note: we will need this info later. Note it somewhere.
 
         zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset=hex:<USE YOUR HEX-DATASET HERE> breadcrumb=0 timeoutMs=3000
 
-Note: replace the string "<USE YOUR HEX-DATASET HERE>" in above command by the active operational dataset you read in step 1.
+Note: replace the string " <USE YOUR HEX-DATASET HERE> " in above command by the active operational dataset you read in step 1.
 
 8. Enable Thread network:
 
-        zcl NetworkCommissioning EnableNetwork 1 0 0 networkID=hex:<EXTPAN-ID> breadcrumb=0 timeoutMs=3000
+        zcl NetworkCommissioning EnableNetwork 1 0 0 networkID=hex:<USE YOUR EXTPAN-ID HERE> breadcrumb=0 timeoutMs=3000
        
-Note: replace the string "<EXTPAN-ID>" in above command by the extended PAN-Id you read in step 2.
+Note: replace the string " <USE YOUR EXTPAN-ID HERE> " in above command by the extended PAN-Id you read in step 2.
 
-b
+9. The BLE connection is no longer needed. You can close it with following command:
+       
+       close-ble
 
-
-
-8. When Matter Controller is running set the previously obtained Active Operational Dataset as a hex-encoded value using the following command:
-
-        set-pairing-thread-credential <ADD HEX VALUE WE GOT IN PREVIOUS STEP>
-
-The OpenThread Border Router and Matter Controller is now functional. Next step is to add Matter Devices to the Network. Take a look on the previous page furth further info about this. 
-
+10. on the UART log terminal enter following command to check if the Matter Accessory is part of the Thread network. It should be in the state "child". 
+       
+       
+## 
+       
 [go to previous page](../README.md)
