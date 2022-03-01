@@ -127,18 +127,40 @@ Now let's add the Matter controller to the Raspberry Pi:
 23. You should see now the prompt "chip-device-ctrl > ". Enter help to get a list of available commands. 
 24. stop Controller by pressing Ctrl+C
 
-## Set Network Pairing Credentials
+## Set Network Pairing Credentials / Commission the Matter Accessory using Matter Controller
 You must provide the Matter Controller with network credentials, which will be further used during device commissioning procedure to configure the device with a Thread network.
 
 1. First, fetch and store the current Active Operational Dataset from the OpenThread Border Router (OTBR). In this example the OTBR is running on Docker, so we have to enter the following:
 
         sudo docker exec -it otbr sh -c "sudo ot-ctl dataset active -x"
 
-2. start Matter Controller again by entering:
+2. get the PAN-ID of your thread network:
+
+        sudo docker exec -it otbr sh -c "sudo ot-ctl dataset extpanid"
+
+3. start Matter Controller again by entering:
 
         chip-device-ctrl
 
-3. When Matter Controller is running set the previously obtained Active Operational Dataset as a hex-encoded value using the following command:
+4. Press button 4 on nRF52840DK. (this starts Bluetooth LE advertising on Matter Accessory device)
+
+5. Connecting via BLE:
+
+        connect -ble 3840 20202021 1
+
+6. Adding Thread network:
+
+        zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset= <USE YOUR HEX-DATASET HERE> breadcrumb=0 timeoutMs=3000
+
+7. Enable Thread network:
+
+        zcl NetworkCommissioning EnableNetwork 1 0 0 
+
+
+
+
+
+8. When Matter Controller is running set the previously obtained Active Operational Dataset as a hex-encoded value using the following command:
 
         set-pairing-thread-credential <ADD HEX VALUE WE GOT IN PREVIOUS STEP>
 
