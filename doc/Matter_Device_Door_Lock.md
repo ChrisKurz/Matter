@@ -34,11 +34,38 @@ NOTE: Please use nRF Connect SDK Version 1.8.0. Some needed files are not availa
 
 7. Open a terminal program (e.g. Putty) and see logs from the development board. Default settings for terminal program: 115200 Bd, 8 databits, 1 stop bit, no parity
 
+## Restart OpenTread Border Router (OTBR) and Matter Controller
+You can skip the steps in this subchapter if you just installed the Raspberry Pi and if no Reset or power cycling of the Raspberry Pi was done. In this case continue with step x.
+
+Otherwise follow these steps:
+
+8. Remote control of Raspberry Pi for Windows users:
+
+a. Open Toolchan Manager
+
+b. Expand the dropdown list at the latest NCS version (button with arrow) and click on "Open bash"
+
+c. Run the following command in the bash:  
+
+    ssh ubuntu@ <IP-address of RaspberryPi>
+
+9. Start OTBR docker container:
+
+        sudo docker run -it --rm --privileged --name otbr --network host --volume /dev/ttyACM0:/dev/radio nrfconnect/otbr:8ae81c5 --radio-url spinel+hdlc+uart:///dev/radio?uart-baudrate=1000000
+
+__NOTE:__ For a new Raspberry setup the serial interface is usually ttyACM0. You might have to check if ttyACOM0 is the right serial interface. This is done by entering following command: 
+   
+    ls /dev// | grep ttyACM*
+
+10. open a second bash window (in the same way as described in step 8).
+11. Run the Python CHIP controller application on the Raspberry Pi:
+
+        chip-device-ctrl
 
 ## Commissioning of the Matter Accessory using Matter Controller
 You must provide the Matter Controller with network credentials, which will be further used during device commissioning procedure to configure the device with a Thread network.
 
-1. Write down the discriminator and setup PIN code:
+12. In the terminal program (e.g. Putty) you should see the UART log from the nRF52840DK board. Write down the discriminator and setup PIN code:
 
 The Matter Controller uses a 12-bit value called __discriminator__ to discern between multiple commissionable device advertisements, as well as a 27-bit __setup PIN code__ to authenticate the device. You can find these values in the UART logging terminal of the device (e.g. Putty). Here is an example how the output in the terminal might look like:
 
@@ -56,69 +83,66 @@ In this example you find the following parameters:
 - Discriminator of this device is:  3840
 - Setup code of this device is:  20202021
 
-
-2. First, fetch and store the current Active Operational Dataset from the OpenThread Border Router (OTBR). In this example the OTBR is running on Docker, so we have to enter the following:
+13. Open a third bash window and run ssh (in the same way as described in step 8).
+14. First, fetch and store the current Active Operational Dataset from the OpenThread Border Router (OTBR). In this example the OTBR is running on Docker, so we have to enter the following:
 
         sudo docker exec -it otbr sh -c "sudo ot-ctl dataset active -x"
 
 Note: we will need the hex number later. For example, copy it into notpad. 
 
-3. get the PAN-ID of your thread network:
+15. get the PAN-ID of your thread network:
 
         sudo docker exec -it otbr sh -c "sudo ot-ctl dataset extpanid"
 
 Note: we will need this info later. Note it somewhere. 
 
-4. start Matter Controller again by entering:
+16. Press button 4 on nRF52840DK. (this starts Bluetooth LE advertising on Matter Accessory device. The Advertising will be done for approximately 15 minutes!). Check the UART log for advertising started message.
 
-        chip-device-ctrl
-
-5. Press button 4 on nRF52840DK. (this starts Bluetooth LE advertising on Matter Accessory device. The Advertising will be done for approximately 15 minutes!)
-
-6. Connecting via BLE:
+17. In the bash window that runs the Matter controller (prompt "chip-device-ctrl >" is shown) enter the following to connect via BLE:
 
         connect -ble 3840 20202021 1
 
 Note: You can use the command "ble-scan" to check if the Matter Accessory is still advertising. If advertising has stop, repeat step 4. 
 
-7. The statement "Secure Session to Device Established" has to be shown in UART log.
+18. The statement "Secure Session to Device Established" has to be shown in UART log.
 
-8. Adding Thread network:
+19. Adding Thread network. In the Matter Controller execute the following command with your own HEX-DATASET:
 
         zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset=hex:"USE YOUR HEX-DATASET HERE" breadcrumb=0 timeoutMs=3000
 
 Note: replace the string **"USE YOUR HEX-DATASET HERE"** in above command by the active operational dataset you read in step 1.
 
-9. Enable Thread network:
+20. Now, enable Thread network in Matter Controller:
 
         zcl NetworkCommissioning EnableNetwork 1 0 0 networkID=hex:"USE YOUR EXTPAN-ID HERE" breadcrumb=0 timeoutMs=3000
        
 Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the extended PAN-Id you read in step 2.
 
-10. The BLE connection is no longer needed. You can close it with following command:
+20. The BLE connection is no longer needed. You can close it with following command in Matter Controller:
        
        close-ble
 
-11. on the UART log terminal enter following command to check if the Matter Accessory is part of the Thread network. It should be in the state "child". 
+21. on the UART log terminal enter following command to check if the Matter Accessory is part of the Thread network. It should be in the state "child". 
 
+       ot state
 
 ## Control Application ZCL Clusters
-Execute the following command to toggle the LED state:
+22. Execute the following command to toggle the LED state:
 
        chip-device-ctrl > zcl OnOff Toggle 1234 1 0
 
-You get some details about the OnOff cluster by entering following command:
+23. You get some details about the OnOff cluster by entering following command:
 
        chip-device-ctrl > zcl ? OnOff
        
 ## Read Basic Information out of Matter Accessory
-Every Matter accessory device supports a Basic Cluster, which maintains collection of attributes that a controller can obtain from a device, such as the vendor name, the product name, or software version. Use zclread command to read those values from the device:
+24. Every Matter accessory device supports a Basic Cluster, which maintains collection of attributes that a controller can obtain from a device, such as the vendor name, the product name, or software version. Use zclread command to read those values from the device:
 
        chip-device-ctrl > zclread Basic VendorName 1234 1 0
        chip-device-ctrl > zclread Basic ProductName 1234 1 0
        chip-device-ctrl > zclread Basic SoftwareVersion 1234 1 0
        
-Use the following command to list all available commands for Basic Cluster:
+25. Use the following command to list all available commands for Basic Cluster:
 
        zcl ? Basic
 
