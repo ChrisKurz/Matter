@@ -35,7 +35,7 @@ NOTE: Please use nRF Connect SDK Version 1.8.0. Some needed files are not availa
 7. Open a terminal program (e.g. Putty) and see logs from the development board. Default settings for terminal program: 115200 Bd, 8 databits, 1 stop bit, no parity
 
 ## Restart OpenTread Border Router (OTBR) and Matter Controller
-You can skip the steps in this subchapter if you just installed the Raspberry Pi and if no Reset or power cycling of the Raspberry Pi was done. In this case continue with step x.
+You can skip the steps in this subchapter if you just installed the Raspberry Pi and if no Reset or power cycling of the Raspberry Pi was done. In this case continue with step 12.
 
 Otherwise follow these steps:
 
