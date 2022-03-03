@@ -14,7 +14,7 @@ The OpenThread Border Router is installed on a RaspberryPi by following these st
 
 (__NOTE:__ Ubuntu default login: __ubuntu__  /  password: __ubuntu__)
 
-2. Ensure the RaspberryPi has internet access (e.g. Ethernet connection) and update/upgrade the system:
+2. Ensure the RaspberryPi has internet access (Ethernet connection) and update/upgrade the system:
 
        sudo apt-get update && sudo apt-get upgrade
 
