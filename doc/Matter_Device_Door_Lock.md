@@ -88,7 +88,7 @@ In this example you find the following parameters:
 
         sudo docker exec -it otbr sh -c "sudo ot-ctl dataset active -x"
 
-Note: we will need the hex number later. For example, copy it into notpad. 
+Note: we will need the hex number later. For example, copy it into Notepad. 
 
 15. get the PAN-ID of your thread network:
 
