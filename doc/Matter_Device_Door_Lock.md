@@ -39,7 +39,7 @@ You can skip the steps in this subchapter if you just installed the Raspberry Pi
 
 Otherwise follow these steps:
 
-8. Remote control of Raspberry Pi for Windows users:
+8. Ensure the RaspberryPi has internet access (Ethernet connection). Remote control of Raspberry Pi for Windows users:
 
 a. Open Toolchan Manager
 
