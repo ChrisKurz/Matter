@@ -121,13 +121,13 @@ Note: You can use the command "ble-scan" to check if the Matter Accessory is sti
 
         zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset=hex:"USE YOUR HEX-DATASET HERE" breadcrumb=0 timeoutMs=3000
 
-Note: replace the string **"USE YOUR HEX-DATASET HERE"** in above command by the active operational dataset you read in step 1.
+Note: replace the string **"USE YOUR HEX-DATASET HERE"** in above command by the active operational dataset you read in step 19.
 
 24. Now, enable Thread network in Matter Controller:
 
         zcl NetworkCommissioning EnableNetwork 1 0 0 networkID=hex:"USE YOUR EXTPAN-ID HERE" breadcrumb=0 timeoutMs=3000
        
-Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the extended PAN-Id you read in step 2.
+Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the extended PAN-Id you read in step 20.
 
 25. The BLE connection is no longer needed. You can close it with following command in Matter Controller:
        
