@@ -67,6 +67,7 @@ __NOTE:__ For a new Raspberry setup the serial interface is usually ttyACM0. You
         chip-device-ctrl
 
 ## Ensure the OTBR is running as Leader in Thread network
+[Video Link](https://youtu.be/SfkcsiwNxPs)
 
 12. Open a browser on a computer that is in the same Network as the Raspberry PI (e.g. laptop is connected via Wifi to a router where the Raspberry Pi is connected via Ethernet cable). 
 13. Open the page **http:// < IP address of your Raspberry Pi >**
