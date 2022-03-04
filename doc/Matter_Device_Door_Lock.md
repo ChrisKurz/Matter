@@ -70,6 +70,7 @@ __NOTE:__ For a new Raspberry setup the serial interface is usually ttyACM0. You
 15. Click in the menu bar on the left on "Status". In case an "RCP:State disabled" is shown in the first line, you have to form the Thread Network:
 
 a. Go to the "Form" tab and press button "Form"
+
 b. You succeeded with these steps when you see the message "__FORM operation is successful__"
 
 ## Commissioning of the Matter Accessory using Matter Controller
