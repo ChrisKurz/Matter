@@ -6,6 +6,8 @@ https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/samples/matter/l
 
 ## Realize Door Lock on an nRF52840DK
 
+[Video Link](https://youtu.be/unZ_Lrzg6fg)
+
 This description is using nRF Connect SDK V1.8.0. Note that later versions may differ from the example delivered with this SDK version!
 
 The quickest way to setup the board is to use command line instructions. Here is the description:
