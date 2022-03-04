@@ -79,6 +79,7 @@ a. Go to the "Form" tab and press button "Form"
 b. You succeeded with these steps when you see the message "__FORM operation is successful__"
 
 ## Commissioning of the Matter Accessory using Matter Controller
+[Video Link](https://youtu.be/nIRvKnQqS1A)
 You must provide the Matter Controller with network credentials, which will be further used during device commissioning procedure to configure the device with a Thread network.
 
 16. In the terminal program (e.g. Putty) you should see the UART log from the nRF52840DK board. Write down the discriminator and setup PIN code:
