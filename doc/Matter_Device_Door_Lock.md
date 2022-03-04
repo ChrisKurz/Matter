@@ -14,7 +14,7 @@ The quickest way to setup the board is to use command line instructions. Here is
 
 2. As soon as a nRF Connect SDK version 1.8.0 is installed you see the "Open IDE" buttons and for each installed version you also see a button with and arrow showing downwards. Click this button and click on "open command prompt" or "open bash".
 
-NOTE: Please use nRF Connect SDK Version 1.8.0. Some needed files are not available in nRF Connect SDK V1.9.0 or later!!!
+NOTE: Please use nRF Connect SDK Version 1.8.0. 
 
 3. go to the folder __nrf/samples/matter/lock__
 
