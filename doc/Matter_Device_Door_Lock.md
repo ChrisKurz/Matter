@@ -131,7 +131,7 @@ Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the e
 
 25. The BLE connection is no longer needed. You can close it with following command in Matter Controller:
        
-       close-ble
+        close-ble
 
 26. on the UART log terminal enter following command to check if the Matter Accessory is part of the Thread network. It should be in the state "child". 
 
