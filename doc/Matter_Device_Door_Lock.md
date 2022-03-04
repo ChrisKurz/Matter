@@ -162,7 +162,7 @@ Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the e
        
 30. Use the following command to list all available commands for Basic Cluster:
 
-       zcl ? Basic
+        zcl ? Basic
 
 
 [go to previous page](../README.md)
