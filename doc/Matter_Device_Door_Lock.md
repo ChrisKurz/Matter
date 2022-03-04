@@ -136,33 +136,27 @@ Note: replace the string **"USE YOUR HEX-DATASET HERE"** in above command by the
        
 Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the extended PAN-Id you read in step 20.
 
-25. The BLE connection is no longer needed. You can close it with following command in Matter Controller:
-       
-        close-ble
-
-26. on the UART log terminal enter following command to check if the Matter Accessory is part of the Thread network. It should be in the state "child". 
+25. on the UART log terminal enter following command to check if the Matter Accessory is part of the Thread network. It should be in the state "child". 
 
         ot state
 
 ## Control Application ZCL Clusters
-Note: Please note that the Matter Controller should not be stopped after commissioning. In case it was stopped, please reset the nRF52840DK board (factory reset by pressing several seconds the button 1 and check UART log) and start again with commissioning.
-
-27. Execute the following command to toggle the LED state:
+26. Execute the following command to toggle the LED state:
 
         chip-device-ctrl > zcl OnOff Toggle 1 1 0
 
-28. You get some details about the OnOff cluster by entering following command:
+27. You get some details about the OnOff cluster by entering following command:
 
         chip-device-ctrl > zcl ? OnOff
        
 ## Read Basic Information out of Matter Accessory
-29. Every Matter accessory device supports a Basic Cluster, which maintains collection of attributes that a controller can obtain from a device, such as the vendor name, the product name, or software version. Use zclread command to read those values from the device:
+28. Every Matter accessory device supports a Basic Cluster, which maintains collection of attributes that a controller can obtain from a device, such as the vendor name, the product name, or software version. Use zclread command to read those values from the device:
 
         chip-device-ctrl > zclread Basic VendorName 1 1 0
         chip-device-ctrl > zclread Basic ProductName 1 1 0
         chip-device-ctrl > zclread Basic SoftwareVersion 1 1 0
        
-30. Use the following command to list all available commands for Basic Cluster:
+29. Use the following command to list all available commands for Basic Cluster:
 
         zcl ? Basic
 
