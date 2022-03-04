@@ -145,6 +145,8 @@ Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the e
         ot state
 
 ## Control Application ZCL Clusters
+Note: Please note that the Matter Controller should not be stopped after commissioning. In case it was stopped, please reset the nRF52840DK board (factory reset by pressing several seconds the button 1 and check UART log) and start again with commissioning.
+
 27. Execute the following command to toggle the LED state:
 
         chip-device-ctrl > zcl OnOff Toggle 1 1 0
