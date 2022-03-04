@@ -148,15 +148,37 @@ Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the e
 27. You get some details about the OnOff cluster by entering following command:
 
         chip-device-ctrl > zcl ? OnOff
-       
+        
+__NOTE:__ Currently the zcl instruction is sent via Bluetooth LE. When you close Bluetooth with command "close-ble" you will see that the zcl command is failing. We have to resolve the accessory IP on the controller. This is done in the next steps.
+
+28. Now, disconnect the Bluetooth connection by entering following command in the Matter Controller:
+
+        close-ble
+
+29. Verify the accessory registered SRP services. Enter in bash window following line:
+
+        sudo docker exec -it otbr sh -c "sudo ot-ctl srp server service"
+
+30. Resolve accessory IP address on the Matter Controller (so far we used the Node-ID "1"):
+
+        resolve 1
+
+31. Try to change lock state using Matter Controller:
+
+        zcl OnOff Toggle 1 1 0
+        
+32. Try to read lock state using Matter Controller:
+
+        zclread OnOff OnOff 1 1 0
+
 ## Read Basic Information out of Matter Accessory
-28. Every Matter accessory device supports a Basic Cluster, which maintains collection of attributes that a controller can obtain from a device, such as the vendor name, the product name, or software version. Use zclread command to read those values from the device:
+33. Every Matter accessory device supports a Basic Cluster, which maintains collection of attributes that a controller can obtain from a device, such as the vendor name, the product name, or software version. Use zclread command to read those values from the device:
 
         chip-device-ctrl > zclread Basic VendorName 1 1 0
         chip-device-ctrl > zclread Basic ProductName 1 1 0
         chip-device-ctrl > zclread Basic SoftwareVersion 1 1 0
        
-29. Use the following command to list all available commands for Basic Cluster:
+34. Use the following command to list all available commands for Basic Cluster:
 
         zcl ? Basic
 
