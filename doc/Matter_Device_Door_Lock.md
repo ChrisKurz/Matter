@@ -147,7 +147,7 @@ Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the e
 ## Control Application ZCL Clusters
 27. Execute the following command to toggle the LED state:
 
-       chip-device-ctrl > zcl OnOff Toggle 1234 1 0
+       chip-device-ctrl > zcl OnOff Toggle 1 1 0
 
 28. You get some details about the OnOff cluster by entering following command:
 
@@ -156,9 +156,9 @@ Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the e
 ## Read Basic Information out of Matter Accessory
 29. Every Matter accessory device supports a Basic Cluster, which maintains collection of attributes that a controller can obtain from a device, such as the vendor name, the product name, or software version. Use zclread command to read those values from the device:
 
-       chip-device-ctrl > zclread Basic VendorName 1234 1 0
-       chip-device-ctrl > zclread Basic ProductName 1234 1 0
-       chip-device-ctrl > zclread Basic SoftwareVersion 1234 1 0
+       chip-device-ctrl > zclread Basic VendorName 1 1 0
+       chip-device-ctrl > zclread Basic ProductName 1 1 0
+       chip-device-ctrl > zclread Basic SoftwareVersion 1 1 0
        
 30. Use the following command to list all available commands for Basic Cluster:
 
