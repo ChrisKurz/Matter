@@ -68,6 +68,7 @@ __NOTE:__ For a new Raspberry setup the serial interface is usually ttyACM0. You
 13. Open the page **http:// < IP address of your Raspberry Pi >**
 14. Thread Border Router webpage should now be shown.
 15. Click in the menu bar on the left on "Status". In case an "RCP:State disabled" is shown in the first line, you have to form the Thread Network:
+
 a. Go to the "Form" tab and press button "Form"
 b. You succeeded with these steps when you see the message "__FORM operation is successful__"
 
