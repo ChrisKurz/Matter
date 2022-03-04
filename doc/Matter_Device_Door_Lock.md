@@ -135,7 +135,7 @@ Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the e
 
 26. on the UART log terminal enter following command to check if the Matter Accessory is part of the Thread network. It should be in the state "child". 
 
-       ot state
+        ot state
 
 ## Control Application ZCL Clusters
 27. Execute the following command to toggle the LED state:
