@@ -120,7 +120,7 @@ Note: we will need this info later. Note it somewhere.
 
         connect -ble 3840 20202021 1
 
-Note: You can use the command "ble-scan" to check if the Matter Accessory is still advertising. If advertising has stop, repeat step 4. 
+Note: You can use the command "ble-scan" to check if the Matter Accessory is still advertising. If advertising has stop, repeat step 20. 
 
 22. The statement "Secure Session to Device Established" has to be shown in UART log.
 
