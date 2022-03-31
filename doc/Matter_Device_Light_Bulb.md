@@ -123,7 +123,7 @@ Note: You can use the command "ble-scan" to check if the Matter Accessory is sti
 
 22. The statement "Secure Session to Device Established" has to be shown in UART log.
 
-23. Each ZCL command has a following format: 
+23. Each ZCL command has the following format: 
 
         zcl < Cluster > < Command > < Node Id > < Endpoint Id > < Group Id > [ arguments ]
 
