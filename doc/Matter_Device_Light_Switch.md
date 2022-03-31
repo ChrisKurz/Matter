@@ -18,7 +18,7 @@ NOTE: Please use nRF Connect SDK Version 1.8.0.
 
 3. go to the folder __nrf/samples/matter/light_switch__
 
-       cd nrf/samples/matter/light_bulb
+       cd nrf/samples/matter/light_switch
 
 4. in case there is a build folder, remove it.
 
