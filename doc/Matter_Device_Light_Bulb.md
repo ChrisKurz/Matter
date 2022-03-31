@@ -175,9 +175,7 @@ __NOTE:__ Currently the zcl instruction is sent via Bluetooth LE. When you close
 
         zclread Basic VendorName 1 1 0
         
-        
         zclread Basic ProductName 1 1 0
-        
         
         zclread Basic SoftwareVersion 1 1 0
        
