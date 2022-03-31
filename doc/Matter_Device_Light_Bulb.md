@@ -140,11 +140,11 @@ Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the e
         ot state
 
 ## Control Application ZCL Clusters
-26. Execute the following command to toggle the LED state:
+26. Execute the following command to toggle the LED state (in Matter Controller terminal):
 
         zcl OnOff Toggle 1 1 0
 
-27. You get some details about the OnOff cluster by entering following command:
+27. You get some details about the OnOff cluster by entering following command (in Matter Controller terminal):
 
         zcl ? OnOff
         
