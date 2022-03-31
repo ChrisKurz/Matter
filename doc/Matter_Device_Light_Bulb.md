@@ -123,9 +123,11 @@ Note: You can use the command "ble-scan" to check if the Matter Accessory is sti
 
 22. The statement "Secure Session to Device Established" has to be shown in UART log.
 
-23. Adding Thread network. In the Matter Controller execute the following command with your own HEX-DATASET:
+23. Each ZCL command has a following format: 
 
-Each ZCL command has a following format: zcl <Cluster> <Command> <Node Id> <Endpoint Id> <Group Id> [arguments]
+        zcl < Cluster > < Command > < Node Id > < Endpoint Id > < Group Id > [ arguments ]
+
+Adding to Thread network. In the Matter Controller execute the following command with your own HEX-DATASET:
 
         zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset=hex:"USE YOUR HEX-DATASET HERE" breadcrumb=0 timeoutMs=3000
 
