@@ -108,6 +108,8 @@ In this example you find the following parameters:
 
 Note: we will need the hex number later. For example, copy it into Notepad. 
 
+In case you get the error "Error 23: NotFound" then the Thread network is not formed. Enter Raspberry Pi IP address in a web browser and click on "Form" button in the Form menu.
+
 19. get the PAN-ID of your thread network:
 
         sudo docker exec -it otbr sh -c "sudo ot-ctl dataset extpanid"
