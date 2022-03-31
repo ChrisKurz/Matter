@@ -125,6 +125,8 @@ Note: You can use the command "ble-scan" to check if the Matter Accessory is sti
 
 23. Adding Thread network. In the Matter Controller execute the following command with your own HEX-DATASET:
 
+Each ZCL command has a following format: zcl <Cluster> <Command> <Node Id> <Endpoint Id> <Group Id> [arguments]
+
         zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset=hex:"USE YOUR HEX-DATASET HERE" breadcrumb=0 timeoutMs=3000
 
 Note: replace the string **"USE YOUR HEX-DATASET HERE"** in above command by the active operational dataset you read in step 19.
