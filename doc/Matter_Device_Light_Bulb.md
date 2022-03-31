@@ -142,11 +142,11 @@ Note: replace the string **"USE YOUR EXTPAN-ID HERE"** in above command by the e
 ## Control Application ZCL Clusters
 26. Execute the following command to toggle the LED state:
 
-        chip-device-ctrl > zcl OnOff Toggle 1 1 0
+        zcl OnOff Toggle 1 1 0
 
 27. You get some details about the OnOff cluster by entering following command:
 
-        chip-device-ctrl > zcl ? OnOff
+        zcl ? OnOff
         
 __NOTE:__ Currently the zcl instruction is sent via Bluetooth LE. When you close Bluetooth with command "close-ble" you will see that the zcl command is failing. We have to resolve the accessory IP on the controller. This is done in the next steps.
 
