@@ -173,9 +173,15 @@ __NOTE:__ Currently the zcl instruction is sent via Bluetooth LE. When you close
 ## Read Basic Information out of Matter Accessory
 33. Every Matter accessory device supports a Basic Cluster, which maintains collection of attributes that a controller can obtain from a device, such as the vendor name, the product name, or software version. Use zclread command to read those values from the device:
 
-        chip-device-ctrl > zclread Basic VendorName 1 1 0
-        chip-device-ctrl > zclread Basic ProductName 1 1 0
-        chip-device-ctrl > zclread Basic SoftwareVersion 1 1 0
+        zclread Basic VendorName 1 1 0
+        
+        
+        zclread Basic ProductName 1 1 0
+        
+        
+        zclread Basic SoftwareVersion 1 1 0
+       
+       
        
 34. Use the following command to list all available commands for Basic Cluster:
 
