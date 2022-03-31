@@ -1,4 +1,4 @@
-# Example Matter Device: Light Switch
+# Example Matter Controller: Light Switch
 
 The sample description can be found here:
 
