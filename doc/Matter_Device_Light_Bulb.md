@@ -127,7 +127,7 @@ Note: You can use the command "ble-scan" to check if the Matter Accessory is sti
 
         zcl < Cluster > < Command > < Node Id > < Endpoint Id > < Group Id > [ arguments ]
 
-Adding to Thread network. In the Matter Controller execute the following command with your own HEX-DATASET:
+Now let's add the Matter Device to the Thread network. In the Matter Controller execute the following command with your own HEX-DATASET:
 
         zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset=hex:"USE YOUR HEX-DATASET HERE" breadcrumb=0 timeoutMs=3000
 
