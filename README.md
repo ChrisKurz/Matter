@@ -15,6 +15,6 @@ In our setup we will use a Raspberry PI and run an OTBR and the Matter Controlle
 
 Now we need Matter Accessories or Matter Devices in our setup. There are several examples within the nRF Connect SDK. Here is a description how to create the Matter Devices and add it to the network. 
 
-- Matter Light bulb
-- Matter Light switch
 - [Matter Door lock](doc/Matter_Device_Door_Lock.md)
+- [Matter Light bulb](doc/Matter_Device_Light_Bulb.md)
+- Matter Light switch
