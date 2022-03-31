@@ -21,3 +21,7 @@ Now we need Matter Accessories or Matter Devices in our setup. There are several
 In the example list you also find one sample that shows how to create a Matter controller:
 
 - Matter Light switch
+
+## Using the CHIP Tool Smartphone App
+
+And [here](doc/CHIP_Tool_App.md) you find a description how to get the CHIP Tool Smartphone App running. 
