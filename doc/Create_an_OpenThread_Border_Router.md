@@ -78,7 +78,7 @@ Next, we will install the OTBR software on the Raspberry Pi. Again, here are dif
        
 10. Download the nrfconnect OpenThread Border Router docker image:
 
-       sudo docker pull nrfconnect/otbr:8ae81c5
+        sudo docker pull nrfconnect/otbr:8ae81c5
        
 11. Start OTBR docker container:
 
