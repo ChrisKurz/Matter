@@ -9,9 +9,15 @@ The OpenThread Border Router is installed on a RaspberryPi by following these st
 
 ## Prepare the Raspberry Pi
 
-1. Install Ubuntu 64-bit server OS (20.04.4 LTS) on a Raspberry's SD card using rpi-imager tool:  https://www.raspberrypi.com/software
+1. Install Ubuntu 64-bit server OS (20.04.4 LTS) on a Raspberry's SD card using rpi-imager tool:  
+
+https://www.raspberrypi.com/software
 
 (__NOTE:__ Ubuntu default login: __ubuntu__  /  password: __ubuntu__)
+
+You will be asked to change your password. After changing password please reboot by entering following command:
+
+       sudo reboot
 
 2. Ensure the RaspberryPi has internet access (e.g. Ethernet connection) and update/upgrade the system:
 
