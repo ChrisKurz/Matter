@@ -39,7 +39,7 @@ c. Run the following command in the bash:
 
 ------
 
-3. Install all required packages for the Raspberry Pi (20.04.3 LTS):
+3. Install all required packages for the Raspberry Pi (20.04.4 LTS):
 
        sudo apt install -fy python3-pip pkg-config libavahi-client-dev libcairo2-dev libgirepository1.0-dev avahi-daemon pi-bluetooth avahi-utils
 
@@ -47,7 +47,7 @@ __NOTE:__ You can check the Ubuntu version of Raspberry Pi with following instru
 
     lsb_release -a
 
-Aditional module need to be installed for Ubuntu 20.10: sudo apt install linux-modules-extra-raspi
+Aditional module need to be installed for Ubuntu 20.10:   sudo apt install linux-modules-extra-raspi
 
 
 4. Some of this software packages require a rebot of the Raspberry Pi. Enter following instruction for reboot: 
@@ -85,7 +85,11 @@ Next, we will install the OTBR software on the Raspberry Pi. Again, here are dif
 
        sudo docker pull nrfconnect/otbr:f0bd216
        
-10. Start OTBR docker container:
+10. OTBR firewall scripts create rules inside the Docker container. Run modprobe to load the kernel modules for iptables:
+
+        sudo modprobe ip6table_filter
+
+11. Start OTBR docker container:
 
         sudo docker run -it --rm --privileged --name otbr --network host --volume /dev/ttyACM0:/dev/radio nrfconnect/otbr:f0bd216 --radio-url spinel+hdlc+uart:///dev/radio?uart-baudrate=1000000
 
@@ -97,43 +101,43 @@ __NOTE:__ For a new Raspberry setup the serial interface is usually ttyACM0. You
 
 Now it should be possible to create a Thread network:
 
-11. Open a browser on a computer that is in the same Network as the Raspberry PI (e.g. laptop is connected via Wifi to a router where the Raspberry Pi is connected via Ethernet cable). 
-12. Open the page **http:// < IP address of your Raspberry Pi >**
-13. Thread Border Router webpage should now be shown.
-14. Go to the "Form" tab and press button "Form"
-15. You succeeded with these steps when you see the message "__FORM operation is successful__"
+12. Open a browser on a computer that is in the same Network as the Raspberry PI (e.g. laptop is connected via Wifi to a router where the Raspberry Pi is connected via Ethernet cable). 
+13. Open the page **http:// < IP address of your Raspberry Pi >**
+14. Thread Border Router webpage should now be shown.
+15. Go to the "Form" tab and press button "Form"
+16. You succeeded with these steps when you see the message "__FORM operation is successful__"
 
 ## Adding Python CHIP Controller (Matter Controller)
 
 Now let's add the Matter controller to the Raspberry Pi:
 
-16. Stop Docker by pressing Ctrl+C
-17. On Raspberry Pi download controller built packages from sdk-connectedhomeip tag:
+17. Stop Docker by pressing Ctrl+C
+18. On Raspberry Pi download controller built packages from sdk-connectedhomeip tag:
 
         wget https://github.com/nrfconnect/sdk-connectedhomeip/releases/download/v1.9.1/chip-tool-python_linux_debug.zip
 
-18. Insall unzip, in case unzip was not yet installed on the Raspberry Pi. 
+19. Insall unzip, in case unzip was not yet installed on the Raspberry Pi. 
 
         sudo apt install unzip
 
-19. Extract the .zip package:
+20. Extract the .zip package:
 
         unzip chip-tool-python_linux_debug.zip
 
-20. and install .whl file on Raspberry Pi:
+21. and install .whl file on Raspberry Pi:
 
         python3 -m pip install chip-0.0-cp37-abi3-linux_aarch64.whl --force-reinstall
 
-21. Now a reboot is needed:
+22. Now a reboot is needed:
 
         sudo reboot
        
-22. Try running the Python CHIP controller application on the Raspberry Pi:
+23. Try running the Python CHIP controller application on the Raspberry Pi:
 
         chip-device-ctrl
         
-23. You should see now the prompt "chip-device-ctrl > ". Enter help to get a list of available commands. 
-24. stop Controller by pressing Ctrl+C
+24. You should see now the prompt "chip-device-ctrl > ". Enter help to get a list of available commands. 
+25. stop Controller by pressing Ctrl+C
 
 ## Set Network Pairing Credentials
 You must provide the Matter Controller with network credentials, which will be further used during device commissioning procedure to configure the device with a Thread network.
