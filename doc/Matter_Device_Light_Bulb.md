@@ -1,12 +1,10 @@
-# Example Matter Device: Door Lock
+# Example Matter Device: Light Bulb
 
 The sample description can be found here:
 
-https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/samples/matter/lock/README.html#
+https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/samples/matter/light_bulb/README.html
 
-## Realize Door Lock on an nRF52840DK
-
-[Video Link](https://youtu.be/unZ_Lrzg6fg)
+## Realize Light Bulb on an nRF52840DK
 
 This description is using nRF Connect SDK V1.8.0. Note that later versions may differ from the example delivered with this SDK version!
 
@@ -18,9 +16,9 @@ The quickest way to setup the board is to use command line instructions. Here is
 
 NOTE: Please use nRF Connect SDK Version 1.8.0. 
 
-3. go to the folder __nrf/samples/matter/lock__
+3. go to the folder __nrf/samples/matter/light_bulb__
 
-       cd nrf/samples/matter/lock
+       cd nrf/samples/matter/light_bulb
 
 4. in case there is a build folder, remove it.
 
@@ -79,7 +77,6 @@ a. Go to the "Form" tab and press button "Form"
 b. You succeeded with these steps when you see the message "__FORM operation is successful__"
 
 ## Commissioning of the Matter Accessory using Matter Controller
-[Video Link](https://youtu.be/nIRvKnQqS1A)
 
 You must provide the Matter Controller with network credentials, which will be further used during device commissioning procedure to configure the device with a Thread network.
 
@@ -122,11 +119,15 @@ Note: we will need this info later. Note it somewhere.
 
         connect -ble 3840 20202021 1
 
-Note: You can use the command "ble-scan" to check if the Matter Accessory is still advertising. If advertising has stop, repeat step 20. 
+Note: You can use the command "ble-scan" to check if the Matter Accessory is still advertising. If advertising has stop, press button 4 again on nRF52840DK. 
 
 22. The statement "Secure Session to Device Established" has to be shown in UART log.
 
-23. Adding Thread network. In the Matter Controller execute the following command with your own HEX-DATASET:
+23. Each ZCL command has the following format: 
+
+        zcl < Cluster > < Command > < Node Id > < Endpoint Id > < Group Id > [ arguments ]
+
+Now let's add the Matter Device to the Thread network. In the Matter Controller execute the following command with your own HEX-DATASET:
 
         zcl NetworkCommissioning AddThreadNetwork 1 0 0 operationalDataset=hex:"USE YOUR HEX-DATASET HERE" breadcrumb=0 timeoutMs=3000
 
@@ -173,16 +174,6 @@ __NOTE:__ Currently the zcl instruction is sent via Bluetooth LE. When you close
 
         zclread OnOff OnOff 1 1 0
 
-## Read Basic Information out of Matter Accessory
-33. Every Matter accessory device supports a Basic Cluster, which maintains collection of attributes that a controller can obtain from a device, such as the vendor name, the product name, or software version. Use zclread command to read those values from the device:
-
-        chip-device-ctrl > zclread Basic VendorName 1 1 0
-        chip-device-ctrl > zclread Basic ProductName 1 1 0
-        chip-device-ctrl > zclread Basic SoftwareVersion 1 1 0
-       
-34. Use the following command to list all available commands for Basic Cluster:
-
-        zcl ? Basic
-
 
 [go to previous page](../README.md)
+
